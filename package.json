@@ -4,6 +4,7 @@
   "description": "JS Project March 2022",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel start-here/src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/MrGultekin/Foxing_JS#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
 }
