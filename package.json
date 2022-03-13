@@ -1,0 +1,24 @@
+{
+  "name": "foxing_js",
+  "version": "1.0.0",
+  "description": "JS Project March 2022",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "test": "echo \"Error: You gonna see here if u run npm run TEST\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrGultekin/Foxing_JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrGultekin/Foxing_JS/issues"
+  },
+  "homepage": "https://github.com/MrGultekin/Foxing_JS#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
