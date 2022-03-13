@@ -23,4 +23,4 @@ function init() {
     requestAnimationFrame(nextAnimationFrame); // all browsers ve built in this func does typically JS animation
 }
 
-init();
+init(); // No problem No regeneratorRuntime is not defined It works for me
