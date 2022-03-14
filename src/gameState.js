@@ -26,7 +26,8 @@ const gameState = {
         } else if (this.clock === this.timeToStartCelebrating) {
             this.startCelebrating();
         } else if (this.clock === this.timeToEndCelebrating) {
-            this.endCelebrating();
+            this.endCelebrating(); // Has problem with feeding and celebration
+
         }
             return this.clock;
         }
