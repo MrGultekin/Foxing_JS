@@ -1,6 +1,6 @@
 .btn {
   background-image: url(bg/BUTTONS/NotSelected.png);
-  background-position: 0px;
+  background-position: 0;
   width: 62px;
   height: 65px;
   overflow: hidden;

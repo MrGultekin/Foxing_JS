@@ -1,19 +1,21 @@
-const TICK_RATE = 3000; //It won't change so Capitalized
+import gameState from "./gameState";
+import {TICK_RATE} from "./constants";
+import initButtons from "./buttons";
+import game, {handleUserAction} from "./gameState";
 
-function tick() {
-    console.log("tick", Date.now());
-}
+//const TICK_RATE = 3000;
+//It won't change so Capitalized
 
 function init() {
     console.log('starting game');
-
+    initButtons(handleUserAction);
     let nextTimeToTick = Date.now(); // let coz it ll be keep changing over the time
 
     function nextAnimationFrame() { //func in func is closure keep the time tracking // closure to encapsulate the state
         const now = Date.now();
 
-        if (nextTimeToTick<=now){
-            tick();
+        if (nextTimeToTick <= now) {
+            gameState.tick();
             nextTimeToTick = now + TICK_RATE;
         }
 
