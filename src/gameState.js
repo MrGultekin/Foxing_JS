@@ -84,7 +84,7 @@ const gameState = {
         this.timeToEndCelebrating = -1;
         this.current = "IDLING";
         this.determineFoxState();
-        // togglePoopBag(false);
+        togglePoopBag(false);
     },
     //if it comes from celebration and it is raining HAVE to go back to looking away camera,if it is idling and daytime looks at the camera
     determineFoxState() {
@@ -95,8 +95,7 @@ const gameState = {
                 modFox("idling");
             }
         }
-    }
-    ,
+    },
 
     handleUserAction(icon) {
         if (
@@ -122,16 +121,21 @@ const gameState = {
                 this.feed();
                 break;
         }
-    }
-    ,
+    },
     changeWeather() {
-        console.log('changeWeather')
-    }
-    ,
-    cleanUpPoop() {
-        console.log('cleanUpPoop')
-    }
-    ,
+        this.scene = (1 + this.scene) % SCENES.length;
+        modScene(SCENES[this.scene]);
+        this.determineFoxState();
+    },
+        cleanUpPoop() {
+            if (this.current === "POOPING") {
+                this.dieTime = -1;
+                togglePoopBag(true);
+                this.startCelebrating();
+                this.hungryTime = getNextHungerTime(this.clock);
+            }
+        },
+
     feed() { // can only feed when hungry
         if (this.current !== 'HUNGRY') {
             return;
