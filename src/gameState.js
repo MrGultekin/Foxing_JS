@@ -150,6 +150,5 @@ const gameState = {
 
 };
 
-
 export const handleUserAction = gameState.handleUserAction.bind(gameState);
 export default gameState;
