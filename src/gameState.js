@@ -1,6 +1,6 @@
-import {modFox, modScene} from "./ui";
-import {DAY_LENGTH, getNextDieTime, getNextHungerTime, NIGHT_LENGTH, RAIN_CHANCE, SCENES,} from "./constants";
-
+import {modFox, modScene,togglePoopBag,writeModal} from "./ui";
+import {DAY_LENGTH, getNextDieTime, getNextHungerTime, NIGHT_LENGTH, RAIN_CHANCE, SCENES,getNextPoopTime,} from "./constants";
+//  getNextPoopTime added missing parts1
 const gameState = {
     current: "INIT",
     clock: 1,
@@ -11,6 +11,7 @@ const gameState = {
     poopTime: -1,
     timeToStartCelebrating: -1,
     timeToEndCelebrating: -1,
+    scene: 0, //   scene: 0, missing parts2
 
     tick() {
         this.clock++;
@@ -39,6 +40,8 @@ const gameState = {
         this.wakeTime = this.clock + 3
         modFox('egg');
         modScene('day');
+        writeModal();
+
     },
     wake() {
         console.log('awoken');
@@ -55,8 +58,20 @@ const gameState = {
         this.state = 'SLEEP';
         modFox('sleep');
         modScene('night');
+// fox wont get hungry in the night and poop in the night with clearTimes
+        this.clearTimes();
         this.wakeTime = this.clock + NIGHT_LENGTH;
     },
+    clearTimes() {
+        this.wakeTime = -1;
+        this.sleepTime = -1;
+        this.hungryTime = -1;
+        this.dieTime = -1;
+        this.poopTime = -1;
+        this.timeToStartCelebrating = -1;
+        this.timeToEndCelebrating = -1;
+    },
+
     getHungry() {
         this.current = "HUNGRY";
         this.dieTime = getNextDieTime(this.clock);
@@ -70,9 +85,12 @@ const gameState = {
         this.dieTime = getNextDieTime(this.clock);
         modFox("pooping");
     },
-
     die() {
-        console.log('Dieing')
+        this.current = "DEAD";
+        modScene("dead");
+        modFox("dead");
+        this.clearTimes();
+        writeModal("The fox died :( <br/> Press the middle button to start");
     },
     startCelebrating() {
         this.current = "CELEBRATING";

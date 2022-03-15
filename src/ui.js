@@ -10,3 +10,10 @@ export const togglePoopBag = function togglePoopBag(show) {
     document.querySelector(".poop-bag").classList.toggle("hidden", !show);//if u show remove hidden class
     // if u NOT showing add the hidden class ! means over HERE HARIKA
 };
+// Y do I write modal-inner every single time?
+//Bcoz i wanna hide the modal if there is NO text by help of css selector
+export const writeModal = function writeModal(text = "") {
+    document.querySelector(
+        ".modal"
+    ).innerHTML = `<div class="modal-inner">${text}</div>`;
+};
